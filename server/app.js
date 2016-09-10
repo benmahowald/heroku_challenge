@@ -4,12 +4,12 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-// var customModule = require('../modules/testModules')
+var customModule = require('../modules/testModules')
 
-// var portDecision = process.env.PORT || 3000;
+var portDecision = process.env.PORT || 3000;
 
 //spin up server
-app.listen('3000', 'localhost', function () {
+app.listen(portDecision, function () {
   console.log('listening on port 3000');
 }); // end server listening
 
@@ -19,14 +19,15 @@ app.get('/', function (req, res) {
   res.sendFile(path.resolve('public/index.html'));
 });//end base url
 
-app.get('/boomerang', function (req, res) {
-  console.log('is the boomerang coming back?');
-  res.send('Whack!');
-});// end get /boomerang
+// app.get('/boomerang', function (req, res) {
+//   console.log('is the boomerang coming back?');
+//   res.send('Whack!');
+// });// end get /boomerang
 
-app.post('/shout', urlencodedParser, function (req, res) {
-  console.log('shout hit:', req.body);
-  res.send('you sent a ', req.body.creature);
+app.post('/texter', urlencodedParser, function (req, res) {
+  console.log('texter hit:', req.body);
+  // var output =  'texter sent '+ req.body.creature;
+  res.send( 'texter sent '+ req.body.creature + ' ' + req.body.noise );
 });//end post shoutout
 
 app.use(express.static('public'));

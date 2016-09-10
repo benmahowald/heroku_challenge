@@ -15,8 +15,8 @@ $(document).ready(function () {
     };
 
     $.ajax({
-      url: '/shout',
       type: 'POST',
+      url: '/texter',
       data: objectToSend,
       success: function (data) {
         console.log('ajax server success/got this data:', data);
